@@ -9,7 +9,11 @@ import ru.neginskiy.familytime.service.CalendarEventService;
 @RestController
 public class Controller {
 
-    private CalendarEventService calendarEventService;
+    private final CalendarEventService calendarEventService;
+
+    public Controller(CalendarEventService calendarEventService) {
+        this.calendarEventService = calendarEventService;
+    }
 
     @GetMapping("/event/{id}")
     public CalendarEvent getEvent(@PathVariable String id) {
