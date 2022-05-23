@@ -7,6 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class FamilytimeApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(FamilytimeApplication.class);
+        SpringApplication.run(FamilytimeApplication.class, args);
     }
 }

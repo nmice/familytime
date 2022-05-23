@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:library
+    url: jdbc:h2:mem:calendarevent
     username: root
     password: root
   sql:
