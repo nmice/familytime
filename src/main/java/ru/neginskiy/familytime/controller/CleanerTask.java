@@ -24,11 +24,10 @@ public class CleanerTask {
     public void removedOldEvents() {
         List<CalendarEvent> events = eventService.findAll();
         events.stream()
-                .filter(
-                        event -> event
-                                .getEndDate()
-                                .isBefore(LocalDateTime.now()
-                                        .truncatedTo(ChronoUnit.DAYS)))
+                .filter(event -> event
+                        .getEndDate()
+                        .isBefore(LocalDateTime.now()
+                                .truncatedTo(ChronoUnit.DAYS)))
                 .forEach(eventService::delete);
     }
 }
