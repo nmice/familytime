@@ -1,5 +1,6 @@
 package ru.neginskiy.familytime.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.neginskiy.familytime.domain.CalendarEvent;
@@ -9,15 +10,11 @@ import ru.neginskiy.familytime.repository.CalendarEventRepository;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class CalendarEventServiceImpl implements CalendarEventService {
 
     private final CalendarEventRepository eventRepository;
     private final UserService userService;
-
-    public CalendarEventServiceImpl(CalendarEventRepository eventRepository, UserService userService) {
-        this.eventRepository = eventRepository;
-        this.userService = userService;
-    }
 
     @Override
     @Transactional
