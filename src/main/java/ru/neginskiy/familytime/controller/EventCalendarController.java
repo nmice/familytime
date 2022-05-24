@@ -16,6 +16,7 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 public class EventCalendarController {
+
     private final CalendarEventService eventService;
 
     @GetMapping("/")
