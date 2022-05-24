@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Family Time</title>
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+<body>
+<div class="container mt-5">
+    <h1 class="h1">Family Time</h1>
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th>#</th>
+            <th>EventDesc</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Exactly</th>
+            <th>UserName</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="event,itemStat : ${events}">
+            <td th:text="${itemStat.index}+1"></td>
+            <td><a href="showEvent.html" th:href="@{/view/__${event.id}__}" th:text="${event.descriptor}"></a></td>
+            <td th:text="${#temporals.format(event.startDate, 'dd.MM HH:mm')}"></td>
+            <td th:text="${#temporals.format(event.endDate, 'dd.MM HH:mm')}"></td>
+            <td>
+                <span th:if="${event.isExactly}">Точно</span>
+                <span th:if="!${event.isExactly}">Надо обсудить</span>
+            </td>
+            <td th:text="${event.user.name}"></td>
+            <form method="post" th:action="@{/delete/__${event.id}__}">
+                <td><a role="button" class="btn btn-secondary btn-sm" href="editEvent.html"
+                       th:href="@{/edit/{id}(id=${event.id})}">Edit</a>
+                    <button class="btn btn-secondary btn-sm">Delete</button>
+            </form>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="/addevent">Добавить новое событие</a>
+</div>
+
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
+</html>

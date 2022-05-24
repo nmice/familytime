@@ -3,6 +3,7 @@ package ru.neginskiy.familytime.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -15,11 +16,11 @@ import java.time.LocalDateTime;
 public class CalendarEvent {
 
     @Id
-    @Column(name = "id")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     /**
-     * Описание события, кто, с кем, куда, что именно
+     * Описание события
      */
     @Column(name = "descriptor")
     private String descriptor;
@@ -28,12 +29,14 @@ public class CalendarEvent {
      * Начало события
      */
     @Column(name = "start_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime startDate;
 
     /**
      * Окончание события
      */
     @Column(name = "end_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime endDate;
 
     /**
@@ -43,11 +46,15 @@ public class CalendarEvent {
     private Boolean isExactly;
 
     /**
-     * Семья, у которой планируется событие
+     * Пользователь, который завел событие
      */
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
-    @JoinColumn(name = "family_id")
-    private Family family;
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public CalendarEvent(User user) {
+        this.user = user;
+    }
 
     // TODO добавить потом участников (пользователь добавляет отдельно, потом добавляет сам кого нужно к событию)
     // private List<String> participants;

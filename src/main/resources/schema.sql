@@ -1,33 +1,20 @@
 DROP TABLE IF EXISTS calendar_event;
 CREATE TABLE calendar_event
 (
-    id         VARCHAR(50) PRIMARY KEY,
+    id         BIGINT PRIMARY KEY AUTO_INCREMENT,
     descriptor VARCHAR(255),
     start_date TIMESTAMP NOT NULL,
-    end_date   DATETIME  NOT NULL,
-    is_exactly BOOL,
-    family_id  VARCHAR(50)
+    end_date   TIMESTAMP  NOT NULL,
+    is_exactly BOOLEAN,
+    user_id  BIGINT
 );
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users
 (
-    id        VARCHAR(50) PRIMARY KEY,
-    login     VARCHAR(255) UNIQUE,
-    pass      VARCHAR(50),
-    name      VARCHAR(255),
-    family_id VARCHAR(50)
-);
-
-DROP TABLE IF EXISTS family;
-CREATE TABLE family
-(
-    id   VARCHAR(50) PRIMARY KEY,
-    name VARCHAR(255) UNIQUE
+    id        BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name      VARCHAR(255)
 );
 
 ALTER TABLE calendar_event
-    ADD CONSTRAINT fk_calendar_event_to_family FOREIGN KEY (family_id) REFERENCES family (id);
-
-ALTER TABLE users
-    ADD CONSTRAINT fk_user_to_family FOREIGN KEY (family_id) REFERENCES family (id) ON DELETE CASCADE;
+    ADD CONSTRAINT fk_calendar_event_to_users FOREIGN KEY (user_id) REFERENCES users (id);

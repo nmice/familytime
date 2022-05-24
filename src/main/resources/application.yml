@@ -3,6 +3,7 @@ spring:
     url: jdbc:h2:mem:calendarevent
     username: root
     password: root
+    schema: classpath:schema.sql
   sql:
     init:
       mode: always

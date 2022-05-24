@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface CalendarEventService {
 
-    CalendarEvent save(CalendarEvent author);
+    void addOrSaveEvent(CalendarEvent event);
 
-    CalendarEvent getById(String id);
+    void delete(CalendarEvent event);
 
-    List<CalendarEvent> getAll();
+    List<CalendarEvent> findAll();
 }

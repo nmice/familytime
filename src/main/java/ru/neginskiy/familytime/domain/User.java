@@ -14,20 +14,8 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @Column(name = "id")
-    private String id;
-
-    /**
-     * Логин пользователя
-     */
-    @Column(name = "login")
-    private String login;
-
-    /**
-     * Пароль пользователя
-     */
-    @Column(name = "pass")
-    private String pass;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     /**
      * Имя пользователя
@@ -35,10 +23,7 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    /**
-     * Семья, в которую входит пользователь
-     */
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
-    @JoinColumn(name = "family_id")
-    private Family family;
+    public User(String name) {
+        this.name = name;
+    }
 }

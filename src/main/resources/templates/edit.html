@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New event</title>
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+<body>
+<div class="container mt-5">
+    <h1 class="h1" th:if="${event.id}">Edit event</h1>
+    <h1 class="h1" th:unless="${event.id}">New event</h1>
+    <form action="#" method="post" th:action="@{/addevent}" th:object="${event}">
+        <input th:field="*{id}" type="hidden">
+        <div class="form-group">
+            <label for="name">Описание события</label>
+            <input class="form-control" id="name" th:field="*{descriptor}" type="text">
+        </div>
+        <div class="form-group">
+            <label for="startDate">Начало</label>
+            <input class="form-control" id="startDate" th:field="*{startDate}" type="datetime-local">
+        </div>
+        <div class="form-group">
+            <label for="endDate">Конец</label>
+            <input class="form-control" id="endDate" th:field="*{endDate}" type="datetime-local">
+        </div>
+        <div class="form-group">
+            <label for="isExactly">Точно?</label>
+            <input class="form-control" id="isExactly" name="isExactly" th:checked="${isExactly}" type="checkbox">
+        </div>
+        <div class="form-group">
+            <label for="userName">Кто заполнил</label>
+            <input class="form-control" id="userName" th:field="*{user.name}" type="text">
+        </div>
+
+        <button>Сохранить</button>
+    </form>
+
+</div>
+
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
+</html>
