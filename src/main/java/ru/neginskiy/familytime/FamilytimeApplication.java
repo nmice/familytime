@@ -13,4 +13,9 @@ public class FamilytimeApplication {
         Console.main(args);
         SpringApplication.run(FamilytimeApplication.class, args);
     }
+    // git push heroku HEAD - Обновить приложение(слетит H2)
+    // TODO Добавить сортировку событий по дате
+    // TODO Убрать ссылку на редактирование
+    // TODO Мб убрать дату окончания
+    // TODO Дефолтные значения - кто заполнил
 }
