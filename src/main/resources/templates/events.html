@@ -23,7 +23,7 @@
         <tbody>
         <tr th:each="event,itemStat : ${events}">
             <td th:text="${itemStat.index}+1"></td>
-            <td><a href="showEvent.html" th:href="@{/edit/{id}(id=${event.id})}" th:text="${event.descriptor}"></a></td>
+            <td><a href="editEvent.html" th:href="@{/edit/{id}(id=${event.id})}" th:text="${event.descriptor}"></a></td>
             <td th:text="${#temporals.format(event.startDate, 'dd.MM HH:mm')}"></td>
             <td th:text="${#temporals.format(event.endDate, 'dd.MM HH:mm')}"></td>
             <td>
@@ -31,11 +31,10 @@
                 <span th:if="!${event.isExactly}">Надо обсудить</span>
             </td>
             <td th:text="${event.user.name}"></td>
-            <form method="post" th:action="@{/delete/__${event.id}__}">
-                <td><a role="button" class="btn btn-secondary btn-sm" href="editEvent.html"
-                       th:href="@{/edit/{id}(id=${event.id})}">Edit</a>
+            <td>
+                <form method="post" th:action="@{/delete/__${event.id}__}">
                     <button class="btn btn-secondary btn-sm">Delete</button>
-            </form>
+                </form>
             </td>
         </tr>
         </tbody>
