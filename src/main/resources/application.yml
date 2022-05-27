@@ -3,12 +3,11 @@ spring:
     url: jdbc:h2:mem:calendarevent
     username: root
     password: root
-    schema: classpath:schema.sql # Намотался с этим ужас
   sql:
     init:
       mode: always
-      schema-locations: schema.sql
-      data-locations: data.sql
+      schema-locations: classpath:schema.sql
+      data-locations: classpath:data.sql
   h2:
     console:
       enabled: true

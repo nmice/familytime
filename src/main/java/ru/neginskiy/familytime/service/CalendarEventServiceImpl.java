@@ -25,7 +25,7 @@ public class CalendarEventServiceImpl implements CalendarEventService {
     @Override
     @Transactional(readOnly = true)
     public List<CalendarEvent> findAll() {
-        return eventRepository.findAll();
+        return eventRepository.findAllByOrderByStartDateAsc();
     }
 
     @Override
