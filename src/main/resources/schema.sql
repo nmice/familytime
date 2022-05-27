@@ -4,7 +4,6 @@ CREATE TABLE calendar_event
     id         BIGINT PRIMARY KEY AUTO_INCREMENT,
     descriptor VARCHAR(255),
     start_date TIMESTAMP NOT NULL,
-    end_date   TIMESTAMP  NOT NULL,
     is_exactly BOOLEAN,
     user_id  BIGINT
 );

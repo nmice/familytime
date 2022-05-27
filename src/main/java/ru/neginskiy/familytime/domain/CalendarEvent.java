@@ -33,13 +33,6 @@ public class CalendarEvent {
     private LocalDateTime startDate;
 
     /**
-     * Окончание события
-     */
-    @Column(name = "end_date")
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    private LocalDateTime endDate;
-
-    /**
      * Точно ли состоится событие, true - точно, false - нужно обсудить
      */
     @Column(name = "is_exactly")

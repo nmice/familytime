@@ -3,7 +3,7 @@ values (1, 'Папа');
 insert into users (id, name)
 values (2, 'Мама');
 
-insert into calendar_event (id, descriptor, start_date, end_date, is_exactly, user_id)
+insert into calendar_event (id, descriptor, start_date, is_exactly, user_id)
 values (1, 'Поход в кино', current_timestamp, current_timestamp, true, 1);
-insert into calendar_event (id, descriptor, start_date, end_date, is_exactly, user_id)
+insert into calendar_event (id, descriptor, start_date, is_exactly, user_id)
 values (2, 'Соревнования у дочки', current_timestamp, current_timestamp, true, 2);

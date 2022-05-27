@@ -14,7 +14,6 @@
             <th>#</th>
             <th>EventDesc</th>
             <th>Start</th>
-            <th>End</th>
             <th>Exactly</th>
             <th>UserName</th>
             <th>Actions</th>
@@ -25,7 +24,6 @@
             <td th:text="${itemStat.index}+1"></td>
             <td><a href="editEvent.html" th:href="@{/edit/{id}(id=${event.id})}" th:text="${event.descriptor}"></a></td>
             <td th:text="${#temporals.format(event.startDate, 'dd.MM HH:mm')}"></td>
-            <td th:text="${#temporals.format(event.endDate, 'dd.MM HH:mm')}"></td>
             <td>
                 <span th:if="${event.isExactly}">Точно</span>
                 <span th:if="!${event.isExactly}">Надо обсудить</span>

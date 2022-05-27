@@ -25,7 +25,7 @@ public class CleanerTask {
         List<CalendarEvent> events = eventService.findAll();
         events.stream()
                 .filter(event -> event
-                        .getEndDate()
+                        .getStartDate()
                         .isBefore(LocalDateTime.now()
                                 .truncatedTo(ChronoUnit.DAYS)))
                 .forEach(eventService::delete);
